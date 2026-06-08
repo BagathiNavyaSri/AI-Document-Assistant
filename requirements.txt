@@ -26,3 +26,5 @@ scikit-learn
 scipy
 huggingface-hub
 langchain-core
+google-generativeai
+python-dotenv

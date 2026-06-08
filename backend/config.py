@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 import os
 import pytesseract
 
@@ -40,6 +42,9 @@ EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 OLLAMA_MODEL = "phi3:mini"
 
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+GEMINI_MODEL = "gemini-2.5-flash"
 
 # =========================================
 # CHUNKING CONFIG

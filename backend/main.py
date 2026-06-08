@@ -41,7 +41,7 @@ from rag.query_engine import (
     retrieve_relevant_chunks
 )
 
-from rag.ollama_engine import (
+from rag.gemini_engine import (
     generate_ai_response
 )
 
