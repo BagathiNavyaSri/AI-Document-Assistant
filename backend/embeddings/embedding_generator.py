@@ -1,4 +1,3 @@
-from sentence_transformers import SentenceTransformer
 
 from config import EMBEDDING_MODEL
 
@@ -15,6 +14,8 @@ def get_embedding_model():
     global embedding_model
 
     if embedding_model is None:
+
+        from sentence_transformers import SentenceTransformer
 
         embedding_model = SentenceTransformer(
             EMBEDDING_MODEL

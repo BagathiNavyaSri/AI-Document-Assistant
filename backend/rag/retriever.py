@@ -129,7 +129,7 @@ def sync_metadata_store():
         )
 
 
-sync_metadata_store()
+# sync_metadata_store()
 
 
 # =========================================
