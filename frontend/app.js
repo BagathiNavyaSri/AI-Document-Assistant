@@ -1,3 +1,4 @@
+const API_BASE_URL = "http://127.0.0.1:8000";
 let currentChatId = null;
 
 let allChats = JSON.parse(
@@ -176,7 +177,7 @@ async function uploadFiles(files) {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/upload",
+            `${API_BASE_URL}/upload`,
             {
                 method: "POST",
                 body: formData
@@ -309,12 +310,12 @@ function normalizeSourceForUI(source) {
 
     let sourceUrl = "";
     if (filepath.startsWith("uploads/")) {
-        sourceUrl = `http://127.0.0.1:8000/${filepath}`;
+        sourceUrl = `${API_BASE_URL}/${filepath}`;
     } else if (filepath.includes("/uploads/")) {
         const relativePath = filepath.split("/uploads/")[1];
-        sourceUrl = `http://127.0.0.1:8000/uploads/${relativePath}`;
+        sourceUrl = `${API_BASE_URL}/uploads/${relativePath}`;
     } else if (filepath) {
-        sourceUrl = `http://127.0.0.1:8000/uploads/${filepath.split("/").pop()}`;
+        sourceUrl = `${API_BASE_URL}/uploads/${filepath.split("/").pop()}`;
     }
 
     return {
@@ -452,7 +453,7 @@ if (sendBtn) {
         try {
 
             const response = await fetch(
-                "http://127.0.0.1:8000/ask",
+                `${API_BASE_URL}/ask`,
                 {
                     method: "POST",
 
@@ -674,7 +675,7 @@ saveProfileBtn.addEventListener("click", async () => {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/update-profile",
+            `${API_BASE_URL}/update-profile`,
             {
                 method: "PUT",
 
@@ -939,7 +940,7 @@ async function loadUploadedFiles() {
             localStorage.getItem("email");
 
         const response = await fetch(
-            `http://127.0.0.1:8000/uploaded-files/${email}`
+            `${API_BASE_URL}/uploaded-files/${email}`
         );
 
         const data = await response.json();
@@ -1020,7 +1021,7 @@ async function loadUploadedFiles() {
                 try {
 
                     await fetch(
-                        `http://127.0.0.1:8000/delete-file/${file.id}`,
+                        `${API_BASE_URL}/delete-file/${file.id}`,
                         {
                             method: "DELETE"
                         }
@@ -1046,7 +1047,7 @@ async function loadUploadedFiles() {
             previewBtn.addEventListener("click", () => {
 
                 const previewUrl =
-                    `http://127.0.0.1:8000/${file.filepath}`;
+                    `${API_BASE_URL}/${file.filepath}`;
 
                 window.open(
                     previewUrl,
@@ -1066,7 +1067,7 @@ async function loadUploadedFiles() {
             downloadBtn.addEventListener("click", async () => {
 
                 const response = await fetch(
-                    `http://127.0.0.1:8000/${file.filepath}`
+                    `${API_BASE_URL}/${file.filepath}`
                 );
 
                 const blob = await response.blob();
@@ -1183,7 +1184,7 @@ confirmDeleteBtn.addEventListener("click", async () => {
         if (deleteMode === "files") {
 
             await fetch(
-                "http://127.0.0.1:8000/delete-all-files",
+                `${API_BASE_URL}/delete-all-files`,
                 {
                     method: "DELETE"
                 }

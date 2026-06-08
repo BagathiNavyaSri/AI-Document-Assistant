@@ -1,3 +1,5 @@
+const API_BASE_URL = "http://127.0.0.1:8000";
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -93,12 +95,12 @@
                 : "";
 
             if (filepath.startsWith("uploads/")) {
-                sourceUrl = `http://127.0.0.1:8000/${filepath}`;
+                sourceUrl = `${API_BASE_URL}/${filepath}`;
             } else if (filepath.includes("/uploads/")) {
                 const relativePath = filepath.split("/uploads/")[1];
-                sourceUrl = `http://127.0.0.1:8000/uploads/${relativePath}`;
+                sourceUrl = `${API_BASE_URL}/uploads/${relativePath}`;
             } else if (filepath) {
-                sourceUrl = `http://127.0.0.1:8000/uploads/${filepath.split("/").pop()}`;
+                sourceUrl = `${API_BASE_URL}/uploads/${filepath.split("/").pop()}`;
             }
 
             return {
@@ -170,7 +172,7 @@
             try {
 
                 const response = await fetch(
-                    `http://127.0.0.1:8000/history/${email}`
+                    `${API_BASE_URL}/history/${email}`
                 );
 
                 const data = await response.json();

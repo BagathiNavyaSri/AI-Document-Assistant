@@ -1,3 +1,5 @@
+const API_BASE_URL = "http://127.0.0.1:8000";
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,7 +134,7 @@
             }
 
             const response = await fetch(
-                "http://127.0.0.1:8000/signup",
+                `${API_BASE_URL}/signup`,
                 {
                     method: "POST",
 
