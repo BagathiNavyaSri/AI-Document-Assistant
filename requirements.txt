@@ -20,7 +20,6 @@ opencv-python
 pandas
 python-pptx
 XlsxWriter
-torch
 transformers
 scikit-learn
 scipy
