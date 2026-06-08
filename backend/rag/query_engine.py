@@ -1,6 +1,6 @@
 import numpy as np
 import re
-from embeddings.embedding_generator import embedding_model
+from embeddings.embedding_generator import get_embedding_model
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 from vectorstore.faiss_store import search_embeddings
@@ -61,7 +61,9 @@ def retrieve_relevant_chunks(
     if allowed_filenames is not None and len(allowed_filenames) == 0:
         return []
 
-    query_embedding = embedding_model.encode(
+    model = get_embedding_model()
+
+    query_embedding = model.encode(
         query,
         convert_to_numpy=True
     )
