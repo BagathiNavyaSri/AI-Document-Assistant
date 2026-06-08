@@ -1,20 +1,10 @@
 import numpy as np
 import re
-
+from embeddings.embedding_generator import embedding_model
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sentence_transformers import SentenceTransformer
 
 from vectorstore.faiss_store import search_embeddings
 from rag.retriever import document_chunks
-
-# =====================================
-# LOAD EMBEDDING MODEL
-# =====================================
-
-embedding_model = SentenceTransformer(
-    "all-MiniLM-L6-v2"
-)
-
 
 keyword_index = {
     "version": None,
