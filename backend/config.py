@@ -36,12 +36,6 @@ pytesseract.pytesseract.tesseract_cmd = (
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 
-# =========================================
-# OLLAMA MODEL
-# =========================================
-
-OLLAMA_MODEL = "phi3:mini"
-
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 GEMINI_MODEL = "gemini-2.5-flash"
@@ -59,4 +53,4 @@ CHUNK_OVERLAP = 40
 # RETRIEVAL CONFIG
 # =========================================
 
-TOP_K_RESULTS = 5
+TOP_K_RESULTS = 10

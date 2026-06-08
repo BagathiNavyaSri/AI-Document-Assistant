@@ -28,3 +28,4 @@ huggingface-hub
 langchain-core
 google-generativeai
 python-dotenv
+psycopg2-binary

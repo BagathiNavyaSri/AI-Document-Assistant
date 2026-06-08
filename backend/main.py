@@ -50,15 +50,12 @@ import re
 import json
 from fastapi.staticfiles import StaticFiles
 
-from database.db import ensure_chat_history_schema
-
 
 # =========================================
 # CREATE DATABASE TABLES
 # =========================================
 
 Base.metadata.create_all(bind=engine)
-ensure_chat_history_schema()
 
 
 # =========================================
