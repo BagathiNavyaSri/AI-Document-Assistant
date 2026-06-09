@@ -33,20 +33,6 @@ from auth.auth_handler import (
 )
 
 from utils.file_utils import save_uploaded_file
-from utils.document_manager import process_document
-
-from rag.retriever import (
-    process_and_index_document
-)
-
-from rag.query_engine import (
-    retrieve_relevant_chunks
-)
-
-from rag.gemini_engine import (
-    generate_ai_response
-)
-
 import os
 import re
 import json
@@ -479,13 +465,15 @@ def login(
 
 @app.post("/upload")
 async def upload_file(
-
+    
     email: str = Form(...),
 
     file: List[UploadFile] = File(...),
 
     db: Session = Depends(get_db)
 ):
+    from utils.document_manager import process_document
+    from rag.retriever import process_and_index_document
 
     user = db.query(User).filter(
 
@@ -658,6 +646,8 @@ def ask_question(
     db: Session = Depends(get_db)
 ):
 
+    from rag.query_engine import retrieve_relevant_chunks
+    from rag.gemini_engine import generate_ai_response
     # Determine the current active files for this user (files visible in the UI)
     existing_user = db.query(User).filter(
         User.email == request.email
