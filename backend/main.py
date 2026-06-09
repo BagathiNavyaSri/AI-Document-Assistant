@@ -501,9 +501,9 @@ async def upload_file(
         try:
 
             file_size = str(upload_file.size)
-
+            print("UPLOAD_START")
             saved_file_path = save_uploaded_file(upload_file)
-
+            print("FILE_SAVED")
             relative_file_path = saved_file_path.replace(
                 "\\",
                 "/"
@@ -567,10 +567,12 @@ async def upload_file(
             # =====================================
             # PROCESS DOCUMENT
             # =====================================
-
+            print("BEFORE_PROCESS_DOCUMENT")
+            
             processed_content = process_document(
                 saved_file_path
             )
+            print("DOCUMENT_PROCESSED")
 
             # =====================================
             # INDEX DOCUMENT
@@ -581,6 +583,8 @@ async def upload_file(
             if isinstance(processed_content, list):
 
                 for page_data in processed_content:
+
+                    print("PROCESSING_PAGE")
 
                     page_text = page_data["text"]
 
@@ -609,7 +613,7 @@ async def upload_file(
 
                     filepath=saved_file_path
                 )
-
+                print("DOCUMENT_INDEXED")
                 all_chunks.extend(chunks)
 
             upload_results.append({
