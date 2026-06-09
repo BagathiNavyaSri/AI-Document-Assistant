@@ -56,6 +56,10 @@ app = FastAPI(
 # =========================================
 # SERVE UPLOADED FILES
 # =========================================
+os.makedirs(
+    "uploads",
+    exist_ok=True
+)
 
 app.mount(
 
