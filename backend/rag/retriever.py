@@ -1,3 +1,5 @@
+print("RETRIEVER_IMPORTED")
+
 import json
 import os
 from processors.text_preprocessor import preprocess_text

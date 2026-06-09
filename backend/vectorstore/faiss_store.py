@@ -1,3 +1,5 @@
+print("FAISS_STORE_IMPORTED")
+
 import faiss
 import numpy as np
 import os

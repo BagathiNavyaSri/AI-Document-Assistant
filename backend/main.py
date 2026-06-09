@@ -1,3 +1,5 @@
+print("MAIN_IMPORTED")
+
 from typing import List
 
 from fastapi import FastAPI, Form
@@ -54,9 +56,9 @@ from fastapi.staticfiles import StaticFiles
 # =========================================
 # CREATE DATABASE TABLES
 # =========================================
-
+print("BEFORE_CREATE_ALL")
 Base.metadata.create_all(bind=engine)
-
+print("AFTER_CREATE_ALL")
 
 # =========================================
 # FASTAPI APP
